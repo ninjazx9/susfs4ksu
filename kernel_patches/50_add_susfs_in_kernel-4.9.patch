@@ -930,11 +930,10 @@ diff --git a/fs/proc/cmdline.c b/fs/proc/cmdline.c
 index cbd82dff7e81a..872b5c88701cc 100644
 --- a/fs/proc/cmdline.c
 +++ b/fs/proc/cmdline.c
-@@ -3,13 +3,23 @@
-	 memcpy(offset_addr, INITRAMFS_STR_REPLACE, INITRAMFS_STR_LEN);
+@@ -26,8 +26,18 @@
  }
  #endif
- 
+
 +#ifdef CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG
 +extern int susfs_spoof_cmdline_or_bootconfig(struct seq_file *m);
 +#endif
@@ -942,18 +941,14 @@ index cbd82dff7e81a..872b5c88701cc 100644
  static int cmdline_proc_show(struct seq_file *m, void *v)
  {
 +#ifdef CONFIG_KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG
-+	if (!susfs_spoof_cmdline_or_bootconfig(m)) {
-+		seq_putc(m, '\n');
-+		return 0;
-+	}
++       if (!susfs_spoof_cmdline_or_bootconfig(m)) {
++               seq_putc(m, '\n');
++               return 0;
++       }
 +#endif
- 	#ifdef CONFIG_INITRAMFS_IGNORE_SKIP_FLAG
-		seq_printf(m, "%s\n", proc_command_line);
-	#else
-		seq_printf(m, "%s\n", saved_command_line);
-	#endif
-		return 0;
-  }
+ #ifdef CONFIG_INITRAMFS_IGNORE_SKIP_FLAG
+        seq_printf(m, "%s\n", proc_command_line);
+ #else
 diff --git a/fs/proc/fd.c b/fs/proc/fd.c
 index 4274f83bf1004..2489e8e0e7359 100644
 --- a/fs/proc/fd.c
