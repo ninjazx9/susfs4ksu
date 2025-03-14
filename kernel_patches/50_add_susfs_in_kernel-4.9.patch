@@ -784,7 +784,7 @@ index fd98e5100cabe..b82f36eb18acb 100644
  {
  	struct inotify_inode_mark *inode_mark;
  	struct inode *inode;
-@@ -83,13 +101,38 @@ static void inotify_fdinfo(struct seq_file *m, struct fsnotify_mark *mark)
+@@ -83,6 +101,38 @@ static void inotify_fdinfo(struct seq_file *m, struct fsnotify_mark *mark)
  	inode_mark = container_of(mark, struct inotify_inode_mark, fsn_mark);
 	inode = igrab(mark->inode);
  	if (inode) {
@@ -930,7 +930,7 @@ diff --git a/fs/proc/cmdline.c b/fs/proc/cmdline.c
 index cbd82dff7e81a..872b5c88701cc 100644
 --- a/fs/proc/cmdline.c
 +++ b/fs/proc/cmdline.c
-@@ -3,8 +3,31 @@
+@@ -3,21 +3,31 @@
  static void proc_command_line_init(void) {
 	 char *offset_addr;
  
@@ -1012,7 +1012,7 @@ diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
 index f4a77817ad74c..1f345088452e0 100644
 --- a/fs/proc/task_mmu.c
 +++ b/fs/proc/task_mmu.c
-@@ -16,6 +16,10 @@
+@@ -16,7 +16,10 @@
  #include <linux/page_idle.h>
  #include <linux/shmem_fs.h>
  #include <linux/mm_inline.h>
