@@ -1016,6 +1016,7 @@ index f4a77817ad74c..1f345088452e0 100644
  #include <linux/page_idle.h>
  #include <linux/shmem_fs.h>
  #include <linux/mm_inline.h>
+ #include <linux/ctype.h>
 +#ifdef CONFIG_KSU_SUSFS_SUS_KSTAT
 +#include <linux/susfs_def.h>
 +#endif
