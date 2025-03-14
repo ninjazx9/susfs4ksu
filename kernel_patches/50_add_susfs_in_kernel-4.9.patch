@@ -930,7 +930,7 @@ diff --git a/fs/proc/cmdline.c b/fs/proc/cmdline.c
 index cbd82dff7e81a..872b5c88701cc 100644
 --- a/fs/proc/cmdline.c
 +++ b/fs/proc/cmdline.c
-@@ -3,21 +3,31 @@
+@@ -3,22 +3,32 @@
  static void proc_command_line_init(void) {
 	 char *offset_addr;
  
